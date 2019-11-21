@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>sublime_lib API Reference &#8212; sublime_lib  documentation</title>
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a></li>
+        <li class="nav-item nav-item-0"><a href="#">sublime_lib  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sublime-lib-api-reference">
+<h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">sublime_lib</span></code> API Reference<a class="headerlink" href="#sublime-lib-api-reference" title="Permalink to this headline">¶</a></h1>
+<p>A utility library for Sublime Text providing a variety of convenience features for other packages to use.</p>
+<p>For general documentation, see the <a class="reference external" href="https://github.com/SublimeText/sublime_lib">README</a>.</p>
+<p>Most <code class="xref py py-mod docutils literal notranslate"><span class="pre">sublime_lib</span></code> classes and functions rely on
+the <a class="reference external" href="https://www.sublimetext.com/docs/3/api_reference.html">Sublime Text API</a>.
+As a result, <code class="xref py py-mod docutils literal notranslate"><span class="pre">sublime_lib</span></code> functionality should not be used at import time.
+Instead, any initialization should be performed in <code class="xref py py-func docutils literal notranslate"><span class="pre">plugin_loaded()</span></code>.</p>
+<div class="section" id="settings-dictionaries">
+<h2>Settings dictionaries<a class="headerlink" href="#settings-dictionaries" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="output-streams-and-panels">
+<h2>Output streams and panels<a class="headerlink" href="#output-streams-and-panels" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="resource-paths">
+<h2>Resource paths<a class="headerlink" href="#resource-paths" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="view-utilities">
+<h2>View utilities<a class="headerlink" href="#view-utilities" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="window-utilities">
+<h2>Window utilities<a class="headerlink" href="#window-utilities" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="syntax-utilities">
+<h2>Syntax utilities<a class="headerlink" href="#syntax-utilities" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="activity-indicator">
+<h2>Activity indicator<a class="headerlink" href="#activity-indicator" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-sublime_lib.encodings">
+<span id="encodings-submodule"></span><h2><a class="reference internal" href="#module-sublime_lib.encodings" title="sublime_lib.encodings"><code class="xref py py-mod docutils literal notranslate"><span class="pre">encodings</span></code></a> submodule<a class="headerlink" href="#module-sublime_lib.encodings" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="sublime_lib.encodings.from_sublime">
+<code class="sig-prename descclassname">sublime_lib.encodings.</code><code class="sig-name descname">from_sublime</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.encodings.from_sublime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate <cite>name</cite> from a Sublime encoding name to a standard Python encoding name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – if <cite>name</cite> is not a Sublime encoding.</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">from_sublime</span><span class="p">(</span><span class="s2">&quot;Western (Windows 1252)&quot;</span><span class="p">)</span>
+<span class="go">&quot;cp1252&quot;</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.3: </span>Raise <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.8)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> if <cite>name</cite> is not a Sublime encoding.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sublime_lib.encodings.to_sublime">
+<code class="sig-prename descclassname">sublime_lib.encodings.</code><code class="sig-name descname">to_sublime</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.encodings.to_sublime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate <cite>name</cite> from a standard Python encoding name to a Sublime encoding name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – if <cite>name</cite> is not a Python encoding.</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">to_sublime</span><span class="p">(</span><span class="s2">&quot;cp1252&quot;</span><span class="p">)</span>
+<span class="go">&quot;Western (Windows 1252)&quot;</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.3: </span>Raise <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.8)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> if <cite>name</cite> is not a Python encoding.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sublime_lib.flags">
+<span id="flags-submodule"></span><h2><a class="reference internal" href="#module-sublime_lib.flags" title="sublime_lib.flags"><code class="xref py py-mod docutils literal notranslate"><span class="pre">flags</span></code></a> submodule<a class="headerlink" href="#module-sublime_lib.flags" title="Permalink to this headline">¶</a></h2>
+<p>Python enumerations for use with Sublime API methods.</p>
+<p>In addition to the standard behavior,
+these enumerations’ constructors accept the name of an enumerated value as a string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PointClass</span><span class="p">(</span><span class="n">sublime</span><span class="o">.</span><span class="n">DIALOG_YES</span><span class="p">)</span>
+<span class="go">&lt;DialogResult.YES: 1&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PointClass</span><span class="p">(</span><span class="s2">&quot;YES&quot;</span><span class="p">)</span>
+<span class="go">&lt;DialogResult.YES: 1&gt;</span>
+</pre></div>
+</div>
+<p>Descendants of <code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code> accept zero or more arguments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PointClass</span><span class="p">(</span><span class="s2">&quot;WORD_START&quot;</span><span class="p">,</span> <span class="s2">&quot;WORD_END&quot;</span><span class="p">)</span>
+<span class="go">&lt;PointClass.WORD_END|WORD_START: 3&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PointClass</span><span class="p">()</span>
+<span class="go">&lt;PointClass.0: 0&gt;</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.2: </span>Constructors accept member names
+and <cite>IntFlag</cite> constructors accept multiple arguments.</p>
+</div>
+<dl class="class">
+<dt id="sublime_lib.flags.DialogResult">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">DialogResult</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">names=None</em>, <em class="sig-param">*</em>, <em class="sig-param">module=None</em>, <em class="sig-param">qualname=None</em>, <em class="sig-param">type=None</em>, <em class="sig-param">start=1</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.DialogResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></a> for use with <code class="xref py py-func docutils literal notranslate"><span class="pre">sublime.yes_no_cancel_dialog()</span></code>.</p>
+<dl class="attribute">
+<dt id="sublime_lib.flags.DialogResult.CANCEL">
+<code class="sig-name descname">CANCEL</code><em class="property"> = sublime.DIALOG_CANCEL</em><a class="headerlink" href="#sublime_lib.flags.DialogResult.CANCEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.DialogResult.YES">
+<code class="sig-name descname">YES</code><em class="property"> = sublime.DIALOG_YES</em><a class="headerlink" href="#sublime_lib.flags.DialogResult.YES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.DialogResult.NO">
+<code class="sig-name descname">NO</code><em class="property"> = sublime.DIALOG_NO</em><a class="headerlink" href="#sublime_lib.flags.DialogResult.NO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.PointClass">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">PointClass</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.PointClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></a> for use with several methods of <code class="xref py py-class docutils literal notranslate"><span class="pre">sublime.View</span></code>:</p>
+<ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">classify()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_by_class()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">expand_by_class()</span></code></p></li>
+</ul>
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.WORD_START">
+<code class="sig-name descname">WORD_START</code><em class="property"> = sublime.CLASS_WORD_START</em><a class="headerlink" href="#sublime_lib.flags.PointClass.WORD_START" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.WORD_END">
+<code class="sig-name descname">WORD_END</code><em class="property"> = sublime.CLASS_WORD_END</em><a class="headerlink" href="#sublime_lib.flags.PointClass.WORD_END" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.PUNCTUATION_START">
+<code class="sig-name descname">PUNCTUATION_START</code><em class="property"> = sublime.CLASS_PUNCTUATION_START</em><a class="headerlink" href="#sublime_lib.flags.PointClass.PUNCTUATION_START" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.PUNCTUATION_END">
+<code class="sig-name descname">PUNCTUATION_END</code><em class="property"> = sublime.CLASS_PUNCTUATION_END</em><a class="headerlink" href="#sublime_lib.flags.PointClass.PUNCTUATION_END" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.SUB_WORD_START">
+<code class="sig-name descname">SUB_WORD_START</code><em class="property"> = sublime.CLASS_SUB_WORD_START</em><a class="headerlink" href="#sublime_lib.flags.PointClass.SUB_WORD_START" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.SUB_WORD_END">
+<code class="sig-name descname">SUB_WORD_END</code><em class="property"> = sublime.CLASS_SUB_WORD_END</em><a class="headerlink" href="#sublime_lib.flags.PointClass.SUB_WORD_END" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.LINE_START">
+<code class="sig-name descname">LINE_START</code><em class="property"> = sublime.CLASS_LINE_START</em><a class="headerlink" href="#sublime_lib.flags.PointClass.LINE_START" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.LINE_END">
+<code class="sig-name descname">LINE_END</code><em class="property"> = sublime.CLASS_LINE_END</em><a class="headerlink" href="#sublime_lib.flags.PointClass.LINE_END" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PointClass.EMPTY_LINE">
+<code class="sig-name descname">EMPTY_LINE</code><em class="property"> = sublime.CLASS_EMPTY_LINE</em><a class="headerlink" href="#sublime_lib.flags.PointClass.EMPTY_LINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.FindOption">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">FindOption</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.FindOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></a> for use with several methods of <code class="xref py py-class docutils literal notranslate"><span class="pre">sublime.View</span></code>:</p>
+<ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">find()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_all()</span></code></p></li>
+</ul>
+<dl class="attribute">
+<dt id="sublime_lib.flags.FindOption.LITERAL">
+<code class="sig-name descname">LITERAL</code><em class="property"> = sublime.LITERAL</em><a class="headerlink" href="#sublime_lib.flags.FindOption.LITERAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.FindOption.IGNORECASE">
+<code class="sig-name descname">IGNORECASE</code><em class="property"> = sublime.IGNORECASE</em><a class="headerlink" href="#sublime_lib.flags.FindOption.IGNORECASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.RegionOption">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">RegionOption</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.RegionOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></a> for use with <code class="xref py py-meth docutils literal notranslate"><span class="pre">sublime.View.add_regions()</span></code>.</p>
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.DRAW_EMPTY">
+<code class="sig-name descname">DRAW_EMPTY</code><em class="property"> = sublime.DRAW_EMPTY</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.DRAW_EMPTY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.HIDE_ON_MINIMAP">
+<code class="sig-name descname">HIDE_ON_MINIMAP</code><em class="property"> = sublime.HIDE_ON_MINIMAP</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.HIDE_ON_MINIMAP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.DRAW_EMPTY_AS_OVERWRITE">
+<code class="sig-name descname">DRAW_EMPTY_AS_OVERWRITE</code><em class="property"> = sublime.DRAW_EMPTY_AS_OVERWRITE</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.DRAW_EMPTY_AS_OVERWRITE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.DRAW_NO_FILL">
+<code class="sig-name descname">DRAW_NO_FILL</code><em class="property"> = sublime.DRAW_NO_FILL</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.DRAW_NO_FILL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.DRAW_NO_OUTLINE">
+<code class="sig-name descname">DRAW_NO_OUTLINE</code><em class="property"> = sublime.DRAW_NO_OUTLINE</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.DRAW_NO_OUTLINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.DRAW_SOLID_UNDERLINE">
+<code class="sig-name descname">DRAW_SOLID_UNDERLINE</code><em class="property"> = sublime.DRAW_SOLID_UNDERLINE</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.DRAW_SOLID_UNDERLINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.DRAW_STIPPLED_UNDERLINE">
+<code class="sig-name descname">DRAW_STIPPLED_UNDERLINE</code><em class="property"> = sublime.DRAW_STIPPLED_UNDERLINE</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.DRAW_STIPPLED_UNDERLINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.DRAW_SQUIGGLY_UNDERLINE">
+<code class="sig-name descname">DRAW_SQUIGGLY_UNDERLINE</code><em class="property"> = sublime.DRAW_SQUIGGLY_UNDERLINE</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.DRAW_SQUIGGLY_UNDERLINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.PERSISTENT">
+<code class="sig-name descname">PERSISTENT</code><em class="property"> = sublime.PERSISTENT</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.PERSISTENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.RegionOption.HIDDEN">
+<code class="sig-name descname">HIDDEN</code><em class="property"> = sublime.HIDDEN</em><a class="headerlink" href="#sublime_lib.flags.RegionOption.HIDDEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.PopupOption">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">PopupOption</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.PopupOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></a> for use with <code class="xref py py-meth docutils literal notranslate"><span class="pre">sublime.View.show_popup()</span></code>.</p>
+<dl class="attribute">
+<dt id="sublime_lib.flags.PopupOption.COOPERATE_WITH_AUTO_COMPLETE">
+<code class="sig-name descname">COOPERATE_WITH_AUTO_COMPLETE</code><em class="property"> = sublime.COOPERATE_WITH_AUTO_COMPLETE</em><a class="headerlink" href="#sublime_lib.flags.PopupOption.COOPERATE_WITH_AUTO_COMPLETE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PopupOption.HIDE_ON_MOUSE_MOVE">
+<code class="sig-name descname">HIDE_ON_MOUSE_MOVE</code><em class="property"> = sublime.HIDE_ON_MOUSE_MOVE</em><a class="headerlink" href="#sublime_lib.flags.PopupOption.HIDE_ON_MOUSE_MOVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PopupOption.HIDE_ON_MOUSE_MOVE_AWAY">
+<code class="sig-name descname">HIDE_ON_MOUSE_MOVE_AWAY</code><em class="property"> = sublime.HIDE_ON_MOUSE_MOVE_AWAY</em><a class="headerlink" href="#sublime_lib.flags.PopupOption.HIDE_ON_MOUSE_MOVE_AWAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.PhantomLayout">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">PhantomLayout</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.PhantomLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></a> for use with <code class="xref py py-class docutils literal notranslate"><span class="pre">sublime.Phantom</span></code>.</p>
+<dl class="attribute">
+<dt id="sublime_lib.flags.PhantomLayout.INLINE">
+<code class="sig-name descname">INLINE</code><em class="property"> = sublime.LAYOUT_INLINE</em><a class="headerlink" href="#sublime_lib.flags.PhantomLayout.INLINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PhantomLayout.BELOW">
+<code class="sig-name descname">BELOW</code><em class="property"> = sublime.LAYOUT_BELOW</em><a class="headerlink" href="#sublime_lib.flags.PhantomLayout.BELOW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.PhantomLayout.BLOCK">
+<code class="sig-name descname">BLOCK</code><em class="property"> = sublime.LAYOUT_BLOCK</em><a class="headerlink" href="#sublime_lib.flags.PhantomLayout.BLOCK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.OpenFileOption">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">OpenFileOption</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.OpenFileOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></a> for use with <code class="xref py py-meth docutils literal notranslate"><span class="pre">sublime.Window.open_file()</span></code>.</p>
+<dl class="attribute">
+<dt id="sublime_lib.flags.OpenFileOption.ENCODED_POSITION">
+<code class="sig-name descname">ENCODED_POSITION</code><em class="property"> = sublime.ENCODED_POSITION</em><a class="headerlink" href="#sublime_lib.flags.OpenFileOption.ENCODED_POSITION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.OpenFileOption.TRANSIENT">
+<code class="sig-name descname">TRANSIENT</code><em class="property"> = sublime.TRANSIENT</em><a class="headerlink" href="#sublime_lib.flags.OpenFileOption.TRANSIENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.QuickPanelOption">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">QuickPanelOption</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.QuickPanelOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></a> for use with <code class="xref py py-meth docutils literal notranslate"><span class="pre">sublime.Window.show_quick_panel()</span></code>.</p>
+<dl class="attribute">
+<dt id="sublime_lib.flags.QuickPanelOption.MONOSPACE_FONT">
+<code class="sig-name descname">MONOSPACE_FONT</code><em class="property"> = sublime.MONOSPACE_FONT</em><a class="headerlink" href="#sublime_lib.flags.QuickPanelOption.MONOSPACE_FONT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.QuickPanelOption.KEEP_OPEN_ON_FOCUS_LOST">
+<code class="sig-name descname">KEEP_OPEN_ON_FOCUS_LOST</code><em class="property"> = sublime.KEEP_OPEN_ON_FOCUS_LOST</em><a class="headerlink" href="#sublime_lib.flags.QuickPanelOption.KEEP_OPEN_ON_FOCUS_LOST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.HoverLocation">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">HoverLocation</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">names=None</em>, <em class="sig-param">*</em>, <em class="sig-param">module=None</em>, <em class="sig-param">qualname=None</em>, <em class="sig-param">type=None</em>, <em class="sig-param">start=1</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.HoverLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></a> for use with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">sublime_plugin.EventListener.on_hover()</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.4.</span></p>
+</div>
+<dl class="attribute">
+<dt id="sublime_lib.flags.HoverLocation.TEXT">
+<code class="sig-name descname">TEXT</code><em class="property"> = sublime.HOVER_TEXT</em><a class="headerlink" href="#sublime_lib.flags.HoverLocation.TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.HoverLocation.GUTTER">
+<code class="sig-name descname">GUTTER</code><em class="property"> = sublime.HOVER_GUTTER</em><a class="headerlink" href="#sublime_lib.flags.HoverLocation.GUTTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.HoverLocation.MARGIN">
+<code class="sig-name descname">MARGIN</code><em class="property"> = sublime.HOVER_MARGIN</em><a class="headerlink" href="#sublime_lib.flags.HoverLocation.MARGIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.QueryContextOperator">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">QueryContextOperator</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">names=None</em>, <em class="sig-param">*</em>, <em class="sig-param">module=None</em>, <em class="sig-param">qualname=None</em>, <em class="sig-param">type=None</em>, <em class="sig-param">start=1</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.QueryContextOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></a> for use with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">sublime_plugin.EventListener.on_query_context()</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.4.</span></p>
+</div>
+<dl class="method">
+<dt id="sublime_lib.flags.QueryContextOperator.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">operand</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.QueryContextOperator.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the operation to the given values.</p>
+<p>For regexp operators,
+<cite>operand</cite> should contain the regexp to be tested against the string <cite>value</cite>.</p>
+</dd></dl>
+
+<p>Example usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sublime_plugin</span>
+<span class="kn">from</span> <span class="nn">sublime_lib.flags</span> <span class="kn">import</span> <span class="n">QueryContextOperator</span>
+
+<span class="k">class</span> <span class="nc">MyListener</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="o">.</span><span class="n">EventListener</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_query_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">operand</span><span class="p">,</span> <span class="n">match_all</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;my_example_key&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">get_some_value</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">QueryContextOperator</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">operand</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="sublime_lib.flags.QueryContextOperator.EQUAL">
+<code class="sig-name descname">EQUAL</code><em class="property"> = sublime.OP_EQUAL</em><a class="headerlink" href="#sublime_lib.flags.QueryContextOperator.EQUAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.QueryContextOperator.NOT_EQUAL">
+<code class="sig-name descname">NOT_EQUAL</code><em class="property"> = sublime.OP_NOT_EQUAL</em><a class="headerlink" href="#sublime_lib.flags.QueryContextOperator.NOT_EQUAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.QueryContextOperator.REGEX_MATCH">
+<code class="sig-name descname">REGEX_MATCH</code><em class="property"> = sublime.OP_REGEX_MATCH</em><a class="headerlink" href="#sublime_lib.flags.QueryContextOperator.REGEX_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.QueryContextOperator.NOT_REGEX_MATCH">
+<code class="sig-name descname">NOT_REGEX_MATCH</code><em class="property"> = sublime.OP_NOT_REGEX_MATCH</em><a class="headerlink" href="#sublime_lib.flags.QueryContextOperator.NOT_REGEX_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.QueryContextOperator.REGEX_CONTAINS">
+<code class="sig-name descname">REGEX_CONTAINS</code><em class="property"> = sublime.OP_REGEX_CONTAINS</em><a class="headerlink" href="#sublime_lib.flags.QueryContextOperator.REGEX_CONTAINS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.QueryContextOperator.NOT_REGEX_CONTAINS">
+<code class="sig-name descname">NOT_REGEX_CONTAINS</code><em class="property"> = sublime.OP_NOT_REGEX_CONTAINS</em><a class="headerlink" href="#sublime_lib.flags.QueryContextOperator.NOT_REGEX_CONTAINS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sublime_lib.flags.CompletionOptions">
+<em class="property">class </em><code class="sig-prename descclassname">sublime_lib.flags.</code><code class="sig-name descname">CompletionOptions</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sublime_lib.flags.CompletionOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></a> for use with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">sublime_plugin.EventListener.on_query_completions()</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.4.</span></p>
+</div>
+<dl class="attribute">
+<dt id="sublime_lib.flags.CompletionOptions.INHIBIT_WORD_COMPLETIONS">
+<code class="sig-name descname">INHIBIT_WORD_COMPLETIONS</code><em class="property"> = sublime.INHIBIT_WORD_COMPLETIONS</em><a class="headerlink" href="#sublime_lib.flags.CompletionOptions.INHIBIT_WORD_COMPLETIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sublime_lib.flags.CompletionOptions.INHIBIT_EXPLICIT_COMPLETIONS">
+<code class="sig-name descname">INHIBIT_EXPLICIT_COMPLETIONS</code><em class="property"> = sublime.INHIBIT_EXPLICIT_COMPLETIONS</em><a class="headerlink" href="#sublime_lib.flags.CompletionOptions.INHIBIT_EXPLICIT_COMPLETIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sublime_lib</span></code> API Reference</a><ul>
+<li><a class="reference internal" href="#settings-dictionaries">Settings dictionaries</a></li>
+<li><a class="reference internal" href="#output-streams-and-panels">Output streams and panels</a></li>
+<li><a class="reference internal" href="#resource-paths">Resource paths</a></li>
+<li><a class="reference internal" href="#view-utilities">View utilities</a></li>
+<li><a class="reference internal" href="#window-utilities">Window utilities</a></li>
+<li><a class="reference internal" href="#syntax-utilities">Syntax utilities</a></li>
+<li><a class="reference internal" href="#activity-indicator">Activity indicator</a></li>
+<li><a class="reference internal" href="#module-sublime_lib.encodings"><code class="xref py py-mod docutils literal notranslate"><span class="pre">encodings</span></code> submodule</a><ul>
+<li><a class="reference internal" href="#sublime_lib.encodings.from_sublime"><code class="docutils literal notranslate"><span class="pre">from_sublime</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.encodings.to_sublime"><code class="docutils literal notranslate"><span class="pre">to_sublime</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sublime_lib.flags"><code class="xref py py-mod docutils literal notranslate"><span class="pre">flags</span></code> submodule</a><ul>
+<li><a class="reference internal" href="#sublime_lib.flags.DialogResult"><code class="docutils literal notranslate"><span class="pre">DialogResult</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.PointClass"><code class="docutils literal notranslate"><span class="pre">PointClass</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.FindOption"><code class="docutils literal notranslate"><span class="pre">FindOption</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.RegionOption"><code class="docutils literal notranslate"><span class="pre">RegionOption</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.PopupOption"><code class="docutils literal notranslate"><span class="pre">PopupOption</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.PhantomLayout"><code class="docutils literal notranslate"><span class="pre">PhantomLayout</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.OpenFileOption"><code class="docutils literal notranslate"><span class="pre">OpenFileOption</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.QuickPanelOption"><code class="docutils literal notranslate"><span class="pre">QuickPanelOption</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.HoverLocation"><code class="docutils literal notranslate"><span class="pre">HoverLocation</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.QueryContextOperator"><code class="docutils literal notranslate"><span class="pre">QueryContextOperator</span></code></a></li>
+<li><a class="reference internal" href="#sublime_lib.flags.CompletionOptions"><code class="docutils literal notranslate"><span class="pre">CompletionOptions</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a></li>
+        <li class="nav-item nav-item-0"><a href="#">sublime_lib  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Thomas Smith.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>
